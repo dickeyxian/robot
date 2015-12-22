@@ -24,6 +24,5 @@ function onerror(err) {
 }
 
 setInterval(function(){
-  console.log('enter')
   co(sendTouTiao).catch(onerror);
-}, 1000);
+}, 5*60*1000);
