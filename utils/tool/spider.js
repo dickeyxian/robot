@@ -1,9 +1,10 @@
 
 'use strict';
 
-var request = require('co-request');
+const request = require('co-request');
+const _ = require('lodash');
 
-module.exports = function* (url, Cookie) {
+module.exports = function* (url, Cookie, options) {
   let headers = {
     'Accept': 'text/html, application/xhtml+xml, */*',
     'Accept-Language': 'zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4',
@@ -15,10 +16,17 @@ module.exports = function* (url, Cookie) {
   if (!Cookie) {
     delete headers.Cookie;
   }
-  let homePage = yield request({
+
+  let obj = {
     url: url,
     headers: headers
-  });
+  };
+
+  if (_.isObject(Cookie)) {
+    options = _.assign(obj, Cookie);
+  }
+
+  let homePage = yield request(options);
 
   return homePage.body;
 };

@@ -7,6 +7,8 @@ const weChatUrl = config.wechat.url;
 
 exports.getTouTiao = toutiao.getTouTiao;
 
+exports.getMovie = require('./lib/movie');
+
 exports.sendMessage = function* (message) {
   return yield urllib.request(weChatUrl, {
     method: 'GET',
