@@ -23,6 +23,7 @@ function onerror(err) {
   console.error(err);
 }
 
+co(sendTouTiao).catch(onerror);
 setInterval(function(){
   co(sendTouTiao).catch(onerror);
 }, 5*60*1000);

@@ -20,8 +20,6 @@ module.exports = function* () {
   banLandHtml = iconv.decode(new Buffer(banLandHtml, 'binary'), 'gbk');
   lvjianHtml = iconv.decode(new Buffer(lvjianHtml, 'binary'), 'gbk');
   let file = path.resolve('./log/movie.json');
-  console.log(file)
-  //let file = 'movie.json';
   let $badLand = cheerio.load(banLandHtml, {decodeEntities: false});
   let $lvjian = cheerio.load(lvjianHtml, {decodeEntities: false});
   let time = {};

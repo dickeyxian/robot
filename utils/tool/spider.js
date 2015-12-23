@@ -23,10 +23,15 @@ module.exports = function* (url, Cookie, options) {
   };
 
   if (_.isObject(Cookie)) {
-    options = _.assign(obj, Cookie);
+    obj = _.assign(obj, Cookie);
   }
 
-  let homePage = yield request(options);
+  if (options) {
+    obj = _.assign(obj, options);
+  }
+
+
+  let homePage = yield request(obj);
 
   return homePage.body;
 };
